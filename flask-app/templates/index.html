@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/index.css', _external=True) }}">
+
+
+<head>
+    <meta charset="UTF-8">
+    <title>Collaborative Whiteboard</title>
+</head>
+<body>
+<canvas id="brush"></canvas>
+<div id="wrapper">
+    <span id="labels-wrapper">
+        <span id="user-count">Not connected</span>
+    </span>
+    <div id="button-wrapper" disabled>
+        <img id="button" class="default-button"
+             src="{{ url_for('static', filename='images/whiteboard.png', _external=True) }}" alt="">
+    </div>
+    <div id="canvas-wrapper">
+        <div id="top-bar">
+            <button id="reset">Reset</button>
+            <button id="undo">Undo</button>
+            <input class="jscolor" id="color-picker" value="000000">
+            <label><input id="erase-checkbox" type="checkbox"/>Erase</label>
+            <div class="thickness-container">
+                <span>Thickness: </span>
+                <input type="range" min="2" max="30" value="3" class="slider" id="thickness-slider">
+            </div>
+        </div>
+        <canvas id="whiteboard-canvas" width="600" height="600"></canvas>
+    </div>
+</div>
+
+</body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.8.1/socket.io.min.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jscolor/2.0.4/jscolor.js"></script>
+<script src="{{ url_for('static', filename='js/index.js', _external=True) }}"></script>
+</html>
